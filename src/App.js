@@ -16,6 +16,9 @@ export default function App({ lang, setLang }) {
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [loadingItems, setLoadingItems] = useState(true);
 
+  const [imgLoading, setImgLoading] = useState(true);
+
+
 
 // forgiving search: finds closest match across all items
 function handleSearch(input) {
@@ -292,8 +295,16 @@ useEffect(() => {
               ✕
             </button>
             <div className="popup-img">
-              <img src={selectedItem.image} alt={selectedItem.nameEn} />
+              {imgLoading && <div className="img-skeleton">Loading...</div>}
+              <img
+                src={selectedItem.image}
+                alt={selectedItem.nameEn}
+                style={{ display: imgLoading ? "none" : "block" }}
+                onLoad={() => setImgLoading(false)}
+                onError={() => setImgLoading(false)} // hide loader even if error
+              />
             </div>
+
             <div className="popup-info">
               <h2>{lang === "en" ? selectedItem.nameEn : selectedItem.nameAr}</h2>
               <p>{selectedItem.price}</p>

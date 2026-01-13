@@ -267,6 +267,8 @@ body {
 .landing-grid {
   display: flex;
   gap: 20px;
+  position: absolute;
+  bottom: 70px;
 }
 
 .landing-btn {
@@ -275,7 +277,7 @@ body {
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 70px;
+  
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(3, 3, 3, 0.15);
   transition: transform 0.2s ease;
