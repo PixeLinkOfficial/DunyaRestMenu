@@ -275,7 +275,7 @@ body {
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(3, 3, 3, 0.15);
   transition: transform 0.2s ease;
@@ -502,6 +502,6 @@ body {
   background-repeat: no-repeat;
   display: flex;              /* optional: center children */
   flex-direction: column;
-  justify-content: center;    /* vertical centering */
+  justify-content: flex-end;    /* vertical centering */
   align-items: center;        /* horizontal centering */
 }
