@@ -93,10 +93,17 @@ body {
 .tabs {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-top: 25px;
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */
+  position: sticky;
+  top: 0;
+  background: #dde7f9;
+  z-index: 2000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #b3c1da;
 }
 
 .tabs::-webkit-scrollbar {
@@ -131,7 +138,7 @@ body {
   text-align: left;
   font-weight: 600;
   text-decoration: none;
-  padding-top: 20px;
+  padding-top: 10px;
   margin-bottom: 20px;
   border-bottom: 1px solid rgb(76, 76, 76);
 }

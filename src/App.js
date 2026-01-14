@@ -203,7 +203,7 @@ useEffect(() => {
           <div className="search-icon">🔍</div>
           <input
             type="text"
-            placeholder={lang === "en" ? "Search drinks..." : "ابحث عن مشروب..."}
+            placeholder={lang === "en" ? "Search..." : "ابحث ..."}
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
           />
