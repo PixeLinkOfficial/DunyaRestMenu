@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/DunyaRestMenu/static/css/main.0a5c713d.css",
+    "main.css": "/DunyaRestMenu/static/css/main.6b9f2766.css",
     "main.js": "/DunyaRestMenu/static/js/main.86395cc0.js",
     "static/media/source.GIF": "/DunyaRestMenu/static/media/source.a5e75501f18b21983b3e.GIF",
     "static/media/restimg.png": "/DunyaRestMenu/static/media/restimg.76f9702990200b1ad601.png",
@@ -9,11 +9,11 @@
     "static/media/1-01.png": "/DunyaRestMenu/static/media/1-01.5e68ca956a9f8efbfb64.png",
     "static/media/uk.png": "/DunyaRestMenu/static/media/uk.a8a72e41688ebe95d32a.png",
     "index.html": "/DunyaRestMenu/index.html",
-    "main.0a5c713d.css.map": "/DunyaRestMenu/static/css/main.0a5c713d.css.map",
+    "main.6b9f2766.css.map": "/DunyaRestMenu/static/css/main.6b9f2766.css.map",
     "main.86395cc0.js.map": "/DunyaRestMenu/static/js/main.86395cc0.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a5c713d.css",
+    "static/css/main.6b9f2766.css",
     "static/js/main.86395cc0.js"
   ]
 }
