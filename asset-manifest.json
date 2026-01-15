@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/DunyaRestMenu/static/css/main.9adc0eb1.css",
-    "main.js": "/DunyaRestMenu/static/js/main.0a694217.js",
+    "main.css": "/DunyaRestMenu/static/css/main.d27f8b25.css",
+    "main.js": "/DunyaRestMenu/static/js/main.bcdcca13.js",
     "static/media/source.GIF": "/DunyaRestMenu/static/media/source.a5e75501f18b21983b3e.GIF",
     "static/media/restimg.png": "/DunyaRestMenu/static/media/restimg.76f9702990200b1ad601.png",
     "static/media/logo.png": "/DunyaRestMenu/static/media/logo.7d78b29a228c98d870c8.png",
     "index.html": "/DunyaRestMenu/index.html",
-    "main.9adc0eb1.css.map": "/DunyaRestMenu/static/css/main.9adc0eb1.css.map",
-    "main.0a694217.js.map": "/DunyaRestMenu/static/js/main.0a694217.js.map"
+    "main.d27f8b25.css.map": "/DunyaRestMenu/static/css/main.d27f8b25.css.map",
+    "main.bcdcca13.js.map": "/DunyaRestMenu/static/js/main.bcdcca13.js.map"
   },
   "entrypoints": [
-    "static/css/main.9adc0eb1.css",
-    "static/js/main.0a694217.js"
+    "static/css/main.d27f8b25.css",
+    "static/js/main.bcdcca13.js"
   ]
 }
