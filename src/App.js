@@ -173,145 +173,208 @@ useEffect(() => {
 
 
   return (
-    <div className={`app ${lang}`} dir={lang === "ar" ? "rtl" : "ltr"}>
-      {/* Header + Lang Switch */}
-      <div className="header">
-        <div
-          className={`lang-switch ${lang}`}
-          onClick={() => setLang(lang === "en" ? "ar" : "en")}
-        >
-          <div className="lang-option">
-            <img src="https://flagcdn.com/gb.svg" alt="English" />
-            <span>EN</span>
-          </div>
-          <div className="lang-option">
-            <img src="https://flagcdn.com/sa.svg" alt="Arabic" />
-            <span>AR</span>
-          </div>
-          <div className="lang-thumb" />
-        </div>
+  <div className={`app ${lang}`} dir={lang === "ar" || lang === "kr" ? "rtl" : "ltr"}>
+    {/* Header + Lang Switch */}
+    <div className="header">
+      <div className={`lang-switch ${lang}`}>
+  <div
+    className={`lang-option ${lang === "en" ? "active" : ""}`}
+    onClick={() => setLang("en")}
+  >
+    <img src="https://flagcdn.com/gb.svg" alt="English" />
+    <span>EN</span>
+  </div>
+  <div
+    className={`lang-option ${lang === "ar" ? "active" : ""}`}
+    onClick={() => setLang("ar")}
+  >
+    <img src="https://flagcdn.com/sa.svg" alt="Arabic" />
+    <span>AR</span>
+  </div>
+  <div
+    className={`lang-option ${lang === "kr" ? "active" : ""}`}
+    onClick={() => setLang("kr")}
+  >
+    <img src="https://flagcdn.com/iq.svg" alt="Kurdish" />
+    <span>KR</span>
+  </div>
+  <div className="lang-thumb" />
+</div>
+
+
+
+
+    </div>
+
+    <div className="content">
+      {/* Hero Image */}
+      <div className="hero-image">
+        <img src={restImg} alt="Restaurant" />
       </div>
 
-      <div className="content">
-        {/* Hero Image */}
-        <div className="hero-image">
-          <img src={restImg} alt="Restaurant" />
-        </div>
+      {/* Search Bar */}
+      <div className="search-bar">
+        <div className="search-icon">🔍</div>
+        <input
+          type="text"
+          placeholder={
+            lang === "en"
+              ? "Search..."
+              : lang === "ar"
+              ? "ابحث ..."
+              : "گەڕان ..."
+          }
+          value={searchTerm}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+      </div>
 
-        {/* Search Bar */}
-        <div className="search-bar">
-          <div className="search-icon">🔍</div>
-          <input
-            type="text"
-            placeholder={lang === "en" ? "Search..." : "ابحث ..."}
-            value={searchTerm}
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-        </div>
-
-
-
-
-
-        {/* Tabs from Firebase */}
-        {loadingCategories ? ( <div className="skeleton-card">Loading categories...</div> ) : ( <div className="tabs">
+      {/* Tabs from Firebase */}
+      {loadingCategories ? (
+        <div className="skeleton-card">Loading categories...</div>
+      ) : (
+        <div className="tabs">
           {categories.map((cat) => (
             <button
-  key={cat.id}
-  className={category === cat.id ? "active" : ""}
-  onClick={() => {
-    setCategory(cat.id);
-    setSearchTerm("");      // clear search input
-    setSearchResult(null);  // clear search result
-  }}
->
-  {lang === "en" ? cat.titleEn : cat.titleAr}
-</button>
-
-          ))}
-        </div> )}
-          
-        
-
-        {/* Active category or search title */}
-{searchTerm ? (
-  <p className="title">
-    {lang === "en" ? "Search Result" : "نتيجة البحث"}
-  </p>
-) : category && (
-  <p className="title">
-    {lang === "en"
-      ? categories.find((c) => c.id === category)?.titleEn
-      : categories.find((c) => c.id === category)?.titleAr}
-  </p>
-)}
-
-{/* Items list */}
-{loadingItems ? ( <div className="spinner"></div> ) :(<div className="list">
-  {searchTerm ? (
-    searchResult ? (
-      <div
-        className="card"
-        key={searchResult.id}
-        onClick={() => setSelectedItem(searchResult)}
-      >
-        <div>
-          <p className="p1">
-            {lang === "en" ? searchResult.nameEn : searchResult.nameAr}
-          </p>
-          <p>{searchResult.price}</p>
-        </div>
-        {searchResult.image && (
-          <CardImage src={searchResult.image} alt={searchResult.nameEn} />
-        )}
-      </div>
-    ) : (
-      // empty search result → no cards
-      null
-    )
-  ) : (
-    items.map((item) => (
-      <div
-        className="card"
-        key={item.id}
-        onClick={() => setSelectedItem(item)}
-      >
-        <div>
-          <p className="p1">{lang === "en" ? item.nameEn : item.nameAr}</p>
-          <p>{item.price}</p>
-        </div>
-        {item.image && <CardImage src={item.image} alt={item.nameEn} />}
-      </div>
-    ))
-  )}
-</div>) }
-      </div>
-
-      {/* Popup */}
-      {selectedItem && (
-        <div className="popup-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="popup" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={() => setSelectedItem(null)}>
-              ✕
+              key={cat.id}
+              className={category === cat.id ? "active" : ""}
+              onClick={() => {
+                setCategory(cat.id);
+                setSearchTerm(""); // clear search input
+                setSearchResult(null); // clear search result
+              }}
+            >
+              {lang === "en"
+                ? cat.titleEn
+                : lang === "ar"
+                ? cat.titleAr
+                : cat.titleKr}
             </button>
-            <div className="popup-img">
-              {imgLoading && <div className="img-skeleton">Loading...</div>}
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.nameEn}
-                style={{ display: imgLoading ? "none" : "block" }}
-                onLoad={() => setImgLoading(false)}
-                onError={() => setImgLoading(false)} // hide loader even if error
-              />
-            </div>
+          ))}
+        </div>
+      )}
 
-            <div className="popup-info">
-              <h2>{lang === "en" ? selectedItem.nameEn : selectedItem.nameAr}</h2>
-              <p>{selectedItem.price}</p>
-            </div>
-          </div>
+      {/* Active category or search title */}
+      {searchTerm ? (
+        <p className="title">
+          {lang === "en"
+            ? "Search Result"
+            : lang === "ar"
+            ? "نتيجة البحث"
+            : "ئەنجامی گەڕان"}
+        </p>
+      ) : (
+        category && (
+          <p className="title">
+            {lang === "en"
+              ? categories.find((c) => c.id === category)?.titleEn
+              : lang === "ar"
+              ? categories.find((c) => c.id === category)?.titleAr
+              : categories.find((c) => c.id === category)?.titleKr}
+          </p>
+        )
+      )}
+
+      {/* Items list */}
+      {loadingItems ? (
+        <div className="spinner"></div>
+      ) : (
+        <div className="list">
+          {searchTerm ? (
+            searchResult ? (
+              <div
+                className="card"
+                key={searchResult.id}
+                onClick={() => setSelectedItem(searchResult)}
+              >
+                <div>
+                  <p className="p1">
+                    {lang === "en"
+                      ? searchResult.nameEn
+                      : lang === "ar"
+                      ? searchResult.nameAr
+                      : searchResult.nameKr}
+                  </p>
+                  <p>{searchResult.price}</p>
+                </div>
+                {searchResult.image && (
+                  <CardImage
+                    src={searchResult.image}
+                    alt={searchResult.nameEn}
+                  />
+                )}
+              </div>
+            ) : null
+          ) : (
+            items.map((item) => (
+              <div
+                className="card"
+                key={item.id}
+                onClick={() => setSelectedItem(item)}
+              >
+                <div>
+                  <p className="p1">
+                    {lang === "en"
+                      ? item.nameEn
+                      : lang === "ar"
+                      ? item.nameAr
+                      : item.nameKr}
+                  </p>
+                  <p>{item.price}</p>
+                </div>
+                {item.image && (
+                  <CardImage src={item.image} alt={item.nameEn} />
+                )}
+              </div>
+            ))
+          )}
         </div>
       )}
     </div>
-  );
+
+    {/* Popup */}
+    {selectedItem && (
+      <div
+        className="popup-overlay"
+        onClick={() => setSelectedItem(null)}
+      >
+        <div
+          className="popup"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            className="popup-close"
+            onClick={() => setSelectedItem(null)}
+          >
+            ✕
+          </button>
+          <div className="popup-img">
+            {imgLoading && (
+              <div className="img-skeleton">Loading...</div>
+            )}
+            <img
+              src={selectedItem.image}
+              alt={selectedItem.nameEn}
+              style={{ display: imgLoading ? "none" : "block" }}
+              onLoad={() => setImgLoading(false)}
+              onError={() => setImgLoading(false)}
+            />
+          </div>
+
+          <div className="popup-info">
+            <h2>
+              {lang === "en"
+                ? selectedItem.nameEn
+                : lang === "ar"
+                ? selectedItem.nameAr
+                : selectedItem.nameKr}
+            </h2>
+            <p>{selectedItem.price}</p>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+);
+
 }

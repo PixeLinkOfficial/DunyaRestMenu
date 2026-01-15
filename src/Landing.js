@@ -16,6 +16,9 @@ export default function Landing({ onSelectLang }) {
         <button className="landing-btn ar" onClick={() => onSelectLang("ar")}>
           العربية
         </button>
+        <button className="landing-btn kr" onClick={() => onSelectLang("kr")}>
+          كوردى
+        </button>
       </div>
     </div>
   );
