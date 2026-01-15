@@ -278,6 +278,7 @@ body {
 
 .landing-grid {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   position: absolute;
   bottom: 70px;
@@ -301,6 +302,10 @@ body {
 }
 
 .landing-btn.ar {
+  background: white;
+  color: #000000;
+}
+.landing-btn.kr {
   background: white;
   color: #000000;
 }
@@ -518,4 +523,15 @@ body {
   flex-direction: column;
   justify-content: flex-end;    /* vertical centering */
   align-items: center;        /* horizontal centering */
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 30px;
+    background-color: rgb(208, 208, 208);
+    display: flex;
+    justify-content: center;
 }

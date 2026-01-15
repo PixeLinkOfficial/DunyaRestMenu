@@ -4,6 +4,9 @@ import { collection, getDocs } from "firebase/firestore";
 import "./index.css";
 import restImg from "./assets/others/restimg.png";
 import CardImage from "./CardImage";
+import pixelLogo from "./assets/1-01.png";
+import krflag from "./assets/kr.png";
+import ukflag from "./assets/uk.png";
 
 export default function App({ lang, setLang }) {
   const [categories, setCategories] = useState([]);
@@ -181,7 +184,7 @@ useEffect(() => {
     className={`lang-option ${lang === "en" ? "active" : ""}`}
     onClick={() => setLang("en")}
   >
-    <img src="https://flagcdn.com/gb.svg" alt="English" />
+    <img src={ukflag} alt="English" style={{height:'18px',width:'18px'}}/>
     <span>EN</span>
   </div>
   <div
@@ -195,7 +198,7 @@ useEffect(() => {
     className={`lang-option ${lang === "kr" ? "active" : ""}`}
     onClick={() => setLang("kr")}
   >
-    <img src="https://flagcdn.com/iq.svg" alt="Kurdish" />
+    <img src={krflag} alt="Kurdish" style={{height:'25px',width:'25px'}}/>
     <span>KR</span>
   </div>
   <div className="lang-thumb" />
@@ -374,6 +377,11 @@ useEffect(() => {
         </div>
       </div>
     )}
+    <div className="footer">
+      <a href="https://pixelinkofficial.github.io/PixelinkOfficial" target="_blank" rel="noopener noreferrer" style={{ position: "absolute", top: "-20px" }} >
+        <img src={pixelLogo} className="pixel" height="70" alt="Pixelink Logo" />
+      </a>
+    </div>
   </div>
 );
 
